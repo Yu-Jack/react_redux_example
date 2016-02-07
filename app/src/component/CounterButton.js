@@ -8,15 +8,20 @@ class CounterButton extends React.Component {
     constructor(props) {
         super(props);
     }
-    handleClick(){
+    handleClick(type){
         console.log(this.props);
-        this.props.actions.addCounter()
+        if ( type === '+'){
+            this.props.actions.increaseCounter()
+        }else if ( type === '-'){
+            this.props.actions.decreaseCounter()
+        }
     }
     render(){
         return (
             <div>
                 <p>{this.props.count}</p>
-                <button onClick={this.handleClick.bind(this)}>+</button>
+                <button onClick={this.handleClick.bind(this, '+')}>+</button>
+                <button onClick={this.handleClick.bind(this, '-')}>-</button>
             </div>
         )
     }

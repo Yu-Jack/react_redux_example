@@ -1,7 +1,14 @@
-const ADD_COUNTER = 'ADD_COUNTER';
+const INCREASE_COUNTER = 'INCREASE_COUNTER';
+const DECREASE_COUNTER = 'DECREASE_COUNTER';
 
-export function addCounter(){
+export function increaseCounter(){
     return {
-        type: ADD_COUNTER
+        type: INCREASE_COUNTER
+    }
+}
+
+export function decreaseCounter(){
+    return {
+        type: DECREASE_COUNTER
     }
 }
