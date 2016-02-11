@@ -7,7 +7,7 @@ var config = {
     },
     module: {
         loaders: [{
-            test: /.js$/,
+            test: /.[js|jsx]$/,
             exclude: /node_modles/,
             loader: 'babel-loader',
             query: {
