@@ -1,25 +1,19 @@
 "use strict";
 import React from 'react';
 import ReactDOM from 'react-dom';
-import TodoList from './component/TodoList';
-import Todo from './reducers/Reducers';
+import Async from './component/Async';
+import Fetch from './reducers/FetchReducer';
+import { logger } from './middleware/logger';
 import { combineReducers, createStore, applyMiddleware } from 'redux';
 import { Provider } from 'react-redux';
+import thunk from 'redux-thunk';
 
-function logger({getState}) {
-    return (next) => (action) => {
-        console.log('action', action);
-        let returnValue = next(action);
-        console.log('state', getState());
-        return returnValue;
-    }
-}
-const createStoreWithMiddleware = applyMiddleware(logger)(createStore);
-const store = createStoreWithMiddleware(Todo);
+const createStoreWithMiddleware = applyMiddleware(logger, thunk)(createStore);
+const store = createStoreWithMiddleware(Fetch);
 
 ReactDOM.render(
     <Provider store={store}>
-        <TodoList />
+        <Async />
     </Provider>,
     document.getElementById("content")
 )
